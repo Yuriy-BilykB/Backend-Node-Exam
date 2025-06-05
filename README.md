@@ -1,6 +1,6 @@
 # Clinic Management API
 
-This project is a backend API for managing clinics, doctors, and medical services. It’s built using **Node.js** and database postgresql.
+This project is a backend API for managing clinics, doctors, and medical favors. It’s built using **Node.js/Nest.js** and database postgresql.
 
 ## Functionality
 
@@ -14,7 +14,7 @@ This project is a backend API for managing clinics, doctors, and medical service
 - Search clinics by partial name
 - Sort clinics by name
 - Filter clinics by services and doctors
-- Each clinic returns full details, including available services
+- Each clinic returns full details, including available favors
 
 ### Doctors
 - Create doctors
@@ -22,22 +22,22 @@ This project is a backend API for managing clinics, doctors, and medical service
 - Sort by name or surname
 - Full doctor details in responses
 
-### Services
-- Create medical services
-- Search by partial service name
-- Sort services by name
+### Favors
+- Create medical favors
+- Search by partial favors name
+- Sort favors by name
 
 ## Business Logic
 
-- There are 5 clinics, each employing doctors.
+- There are clinics, each employing doctors.
 - A doctor may work in multiple clinics.
-- Each doctor can offer one or more services (e.g., traumatology, therapy, vertebrology).
-- Admin can manage doctors, clinics, and services, and access all lists.
+- Each doctor can offer one or more favors.
+- Admin can manage doctors, clinics, and favors, and access all lists.
 
-**Clinic**: name + list of services available through its doctors.  
-**Doctor**: first/last name + clinics + services.  
-**Service**: only a name.  
-Clinics can be filtered by services and associated doctors.
+**Clinic**: name + list of favors available through its doctors.  
+**Doctor**: first/last name + clinics + favors.  
+**Favor**: only a name.  
+Clinics can be filtered by favors and associated doctors.
 
 **Example:**  
 “Kyiv Vertebrology Clinic”, “Kyiv General Clinic” and “Kyiv Dental Clinic”.  
@@ -65,13 +65,15 @@ Same result if searching for clinics where John Doe works.
   ```
 3.Start the development server:
   ```bash
-  npm run dev
+  npm run start
   ```
 Swagger docs available at:
-http://localhost:5000/api
+http://localhost:5000/docs
 
 API Testing
-A Postman collection with all endpoints is included in the /docs directory:
+A Postman collection:
 
 docs/postman_collection.json
+
+
 
