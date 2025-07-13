@@ -1,7 +1,7 @@
-import {Body, Controller, Get, Post, Query, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Post, Put, Delete, Param, Query, UseGuards} from '@nestjs/common';
 import {CreateFavorDto} from "./dto/createFavorDto";
 import {FavorService} from "./favor.service";
-import {ApiBody, ApiQuery} from "@nestjs/swagger";
+import {ApiBody, ApiQuery, ApiParam} from "@nestjs/swagger";
 import {RolesGuard} from "../guards/roles.guard";
 import {AuthGuard} from "../guards/auth.guard";
 import {Roles} from "../decorators/roles.decorator";
@@ -32,4 +32,27 @@ export class FavorController {
         return this.favorService.getFavors(name, sort);
     }
 
+    @UseGuards(AuthGuard)
+    @Get(':id')
+    @ApiParam({ name: 'id', description: 'Favor ID' })
+    getFavorById(@Param('id') id: number) {
+        return this.favorService.getFavorById(id);
+    }
+
+    @UseGuards(AuthGuard, RolesGuard)
+    @Put(':id')
+    @Roles('admin')
+    @ApiParam({ name: 'id', description: 'Favor ID' })
+    @ApiBody({ schema: { type: 'object', properties: { name: { type: 'string' } } } })
+    updateFavor(@Param('id') id: number, @Body() body: { name: string }) {
+        return this.favorService.updateFavor(id, body);
+    }
+
+    @UseGuards(AuthGuard, RolesGuard)
+    @Delete(':id')
+    @Roles('admin')
+    @ApiParam({ name: 'id', description: 'Favor ID' })
+    deleteFavor(@Param('id') id: number) {
+        return this.favorService.deleteFavor(id);
+    }
 }
