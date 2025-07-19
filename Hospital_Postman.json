@@ -1,0 +1,1164 @@
+{
+	"info": {
+		"_postman_id": "d4d34bd3-2c6a-436e-892f-f881a3e9b48c",
+		"name": "Hospital_Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41339945"
+	},
+	"item": [
+		{
+			"name": "auth_requests",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Andriy\",\r\n    \"email\": \"andriy@gmail.com\",\r\n    \"password\": \"123456789\",\r\n    \"role\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0OTA2NDQ2MCwiZXhwIjoxNzQ5MDY1MzYwfQ.y2nIs0ppyiZoh6Z9MAxTeXaSk1UmqTxgMFhF6eD5-tc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"urabilik75@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/refresh",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"urabilik75@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/forgot-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVyYWJpbGlrNzVAZ21haWwuY29tIiwiaWF0IjoxNzQ4NzA1MDYxLCJleHAiOjE3NDg3MDUzNjF9.KnpHAEJXJbHLOS03DnRx5wAvC9QuTI79zEU-ADquENA\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/reset-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clinics",
+			"item": [
+				{
+					"name": "createClinic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyMzY5OCwiZXhwIjoxNzUyOTI0NTk4fQ.pjm1cjXE9u4ltXB9IE-CgLy2GvXdDgbxuiTZ2SsK4t0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kyiv Dental Clinic\",\r\n    \"doctorIds\": [3, 4, 6, 10]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllClinics",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findClinicByDoctorName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTAyMSwiZXhwIjoxNzUyOTI1OTIxfQ.XxR4nGrNfFOzWqIwmcT8tw29QfOq345tAdbDn-xs-A4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clinic?doctorName=John",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic"
+							],
+							"query": [
+								{
+									"key": "doctorName",
+									"value": "John"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findClinicByName",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyMzY5OCwiZXhwIjoxNzUyOTI0NTk4fQ.pjm1cjXE9u4ltXB9IE-CgLy2GvXdDgbxuiTZ2SsK4t0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic?name=Kyiv",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Kyiv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getClinicByFavorName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTAyMSwiZXhwIjoxNzUyOTI1OTIxfQ.XxR4nGrNfFOzWqIwmcT8tw29QfOq345tAdbDn-xs-A4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clinic?favorName=Blood Test",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic"
+							],
+							"query": [
+								{
+									"key": "favorName",
+									"value": "Blood Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sortClinics",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTAyMSwiZXhwIjoxNzUyOTI1OTIxfQ.XxR4nGrNfFOzWqIwmcT8tw29QfOq345tAdbDn-xs-A4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic?sort=desc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Clinic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Kyiv General Clinic Updated\",\r\n  \"doctorIds\": [1, 2]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic/5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Clinic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic/5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add doctors to the Clinic",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctorIds\": [12]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic/6/doctors",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic",
+								"6",
+								"doctors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDoctorFromClinic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic/6/doctors/11",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic",
+								"6",
+								"doctors",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FilterClinicByDoctorAndFavor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNjcyNywiZXhwIjoxNzUyOTI3NjI3fQ.2CBdCpFzu2OgK9IyNoM6ZOcudPw_H0raUUCASTcMRmQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/clinic?doctorName=William&favorName=Physiotherapy",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clinic"
+							],
+							"query": [
+								{
+									"key": "doctorName",
+									"value": "William"
+								},
+								{
+									"key": "favorName",
+									"value": "Physiotherapy"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctors",
+			"item": [
+				{
+					"name": "createDoctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMzg5MSwiZXhwIjoxNzUyOTM0NzkxfQ.5sLBuK3e6_FZpfNYcP98uCdPjJTlPI9V8M1cWSeLhdA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Oleg\",\r\n  \"lastName\": \"Zwir\",\r\n  \"phoneNumber\": \"+380932522000\",\r\n  \"email\": \"oleh@clinic.com\"\r\n}\r\n\r\n\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/doctor",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllDoctors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0ODc5NjI3NCwiZXhwIjoxNzQ4Nzk3MTc0fQ.Zv-YysveZea7tJtNNsBLTT9Hvf6VImSKi4JR-tRng30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/doctor",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filterDoctors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNzE5NSwiZXhwIjoxNzUyOTI4MDk1fQ.igyZ004TmO3DAXZCh7On6H3GGSFnJnpcnefgWcoc-Bc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/doctor?lastName=anderson&sortBy=lastName&sortOrder=desc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor"
+							],
+							"query": [
+								{
+									"key": "lastName",
+									"value": "anderson"
+								},
+								{
+									"key": "sortBy",
+									"value": "lastName"
+								},
+								{
+									"key": "sortOrder",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDoctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjQwODQ0MiwiZXhwIjoxNzUyNDA5MzQyfQ.cvuR737o-bqyF64zZ1jFjCNnuFx8Cgr-MC7M0dJyI1s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Doe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/doctor/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDoctorByName",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNzE5NSwiZXhwIjoxNzUyOTI4MDk1fQ.igyZ004TmO3DAXZCh7On6H3GGSFnJnpcnefgWcoc-Bc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/doctor?lastName=anderson",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor"
+							],
+							"query": [
+								{
+									"key": "lastName",
+									"value": "anderson"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDoctorByPhoneNumber",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNzE5NSwiZXhwIjoxNzUyOTI4MDk1fQ.igyZ004TmO3DAXZCh7On6H3GGSFnJnpcnefgWcoc-Bc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/doctor?phoneNumber=380501234001",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor"
+							],
+							"query": [
+								{
+									"key": "phoneNumber",
+									"value": "380501234001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDoctorByEmail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNzE5NSwiZXhwIjoxNzUyOTI4MDk1fQ.igyZ004TmO3DAXZCh7On6H3GGSFnJnpcnefgWcoc-Bc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/doctor?email=john.anderson@",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "john.anderson@"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDoctorByID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMjA2NSwiZXhwIjoxNzUyOTMyOTY1fQ.1-fg2zweK-fEp5wNBHNRFdBSXg5HnCV56FC_b2Q2YwI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/doctor/4",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addFavorToTheDoctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMTc1NiwiZXhwIjoxNzUyOTMyNjU2fQ.3W1TEo5uW6JT9kDGAHHpnsveDMX9F2g-w9ZgiAvTm0g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"favorIds\": [9]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/doctor/4/favors",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor",
+								"4",
+								"favors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFavorById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMTc1NiwiZXhwIjoxNzUyOTMyNjU2fQ.3W1TEo5uW6JT9kDGAHHpnsveDMX9F2g-w9ZgiAvTm0g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/doctor/4",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteFavorFromDoctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMjQxNSwiZXhwIjoxNzUyOTMzMzE1fQ.6OXxYzXaTAXhWTWk8ZH1G0ZiVHRdxtVbP4PGxBxq1LI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/doctor/1/favors/4",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor",
+								"1",
+								"favors",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFavorForDoctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMjQxNSwiZXhwIjoxNzUyOTMzMzE1fQ.6OXxYzXaTAXhWTWk8ZH1G0ZiVHRdxtVbP4PGxBxq1LI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"favorIds\": [7]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/doctor/1/favors",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"doctor",
+								"1",
+								"favors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favors",
+			"item": [
+				{
+					"name": "createFavor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cardiology Consultation\",\r\n    \"doctorIds\": [5, 8, 10]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/favor",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"favor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFavors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/favor",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"favor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFavorByName",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/favor?name=vac&sort=desc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"favor"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "vac"
+								},
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteFavor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/favor/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"favor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFavor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjQwODQ0MiwiZXhwIjoxNzUyNDA5MzQyfQ.cvuR737o-bqyF64zZ1jFjCNnuFx8Cgr-MC7M0dJyI1s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/favor/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"favor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:5000",
+			"type": "default"
+		}
+	]
+}

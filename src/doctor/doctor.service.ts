@@ -17,6 +17,14 @@ export class DoctorService {
     }
     
     async createDoctor(dto: CreateDoctorDto) {
+        const existingByEmail = await this.doctorRepo.findOneBy({ email: dto.email });
+        if (existingByEmail) {
+            throw new Error('Doctor with this email already exists');
+        }
+        const existingByPhone = await this.doctorRepo.findOneBy({ phoneNumber: dto.phoneNumber });
+        if (existingByPhone) {
+            throw new Error('Doctor with this phone number already exists');
+        }
         const doctor = this.doctorRepo.create(dto);
         return await this.doctorRepo.save(doctor);
     }

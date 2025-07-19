@@ -1,4 +1,4 @@
-import {Injectable, InternalServerErrorException, NotFoundException} from '@nestjs/common';
+import {BadRequestException, Injectable, InternalServerErrorException, NotFoundException} from '@nestjs/common';
 import {CreateClinicDto} from "./dto/CreateClinicDto";
 import {UpdateClinicDto} from "./dto/UpdateClinicDto";
 import {Clinic} from "./entity/clinic.entity";
@@ -23,15 +23,25 @@ export class ClinicService {
     ) {
     }
     
-    async createClinic(dto: CreateClinicDto): Promise<ClinicWithFavors> {
-        const doctors = await this.doctorRepo.findBy({id: In(dto.doctorIds)});
-        const clinic = this.clinicRepo.create({ name: dto.name, doctors });
-        const savedClinic = await this.clinicRepo.save(clinic);
-        
-        return {
-            ...savedClinic,
-            favors: this.getClinicFavors(savedClinic.doctors)
-        };
+    async createClinic(dto: CreateClinicDto): Promise<ClinicWithFavors > {
+        try {
+            const clinic = await this.clinicRepo.findOneBy({ name: dto.name });
+            if (clinic) {
+                throw new BadRequestException("Clinic with this name already exists");
+            }
+            const doctors = await this.doctorRepo.findBy({id: In(dto.doctorIds)});
+            const newClinic = this.clinicRepo.create({ name: dto.name, doctors });
+            const savedClinic = await this.clinicRepo.save(newClinic);
+            return {
+                ...savedClinic,
+                favors: this.getClinicFavors(savedClinic.doctors)
+            };
+        }catch (err) {
+            if (err.code === '23505') {
+                throw new BadRequestException("Clinic with this name already exists");
+            }
+            throw err;
+        }
     }
 
     async getClinics(name?: string, sort: 'asc' | 'desc' = 'asc', favorName?: string, doctorName?: string): Promise<ClinicWithFavors[]> {
