@@ -4,6 +4,12 @@ import {TokensDto} from "./dto/TokensDto";
 import {ConfigService} from "@nestjs/config";
 import {PayloadDto} from "../auth/dto/PayloadDto";
 
+interface IRecoveryPayload {
+    email: string,
+    iat: number,
+    exp: number
+}
+
 @Injectable()
 export class TokensService {
     constructor(
@@ -29,7 +35,7 @@ export class TokensService {
         return {accessToken, refreshToken};
     };
 
-    verifyAccessToken(token: string) {
+    verifyAccessToken(token: string): PayloadDto {
         try {
             return this.jwtService.verify(token, {
                 secret: this.configService.get<string>('ACCESS_TOKEN_SECRET'),
@@ -39,9 +45,9 @@ export class TokensService {
         }
     };
 
-    verifyRefreshToken(token: string) {
+    verifyRefreshToken(token: string): PayloadDto {
         try {
-            return this.jwtService.verify(token, {
+            return  this.jwtService.verify(token, {
                 secret: this.configService.get<string>('REFRESH_TOKEN_SECRET'),
             });
         } catch (error) {
@@ -49,7 +55,7 @@ export class TokensService {
         }
     };
 
-    generateRecoveryToken(email: string) {
+    generateRecoveryToken(email: string): string {
         const payload = {email: email};
         const recoveryToken = this.jwtService.sign(payload,{
             secret: this.configService.get<string>('RECOVERY_TOKEN_SECRET'),
@@ -58,7 +64,7 @@ export class TokensService {
         return recoveryToken;
     };
 
-    verifyRecoveryToken(token: string) {
+    verifyRecoveryToken(token: string): IRecoveryPayload {
         try {
             return this.jwtService.verify(token, {
                 secret: this.configService.get<string>('RECOVERY_TOKEN_SECRET')

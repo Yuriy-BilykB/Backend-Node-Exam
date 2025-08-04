@@ -5,14 +5,6 @@ import {ILike, In, Repository} from "typeorm";
 import {Doctor} from "./entity/doctor.entity";
 import {Favor} from "../favor/entity/favor.entity";
 
-interface DeleteResponse {
-    message: string;
-}
-
-interface RemoveFavorResponse {
-    message: string;
-    updatedDoctor: Doctor;
-}
 
 @Injectable()
 export class DoctorService {

@@ -10,7 +10,7 @@ export class RolesGuard implements CanActivate {
         private tokensService: TokensService
     ) {}
 
-    canActivate(context: ExecutionContext): boolean {
+    async canActivate(context: ExecutionContext): Promise<boolean> {
         const requiredRoles = this.reflector.getAllAndOverride<string[]>(
             ROLES_KEY,
             [
@@ -25,7 +25,7 @@ export class RolesGuard implements CanActivate {
         if (!authHeader?.startsWith('Bearer ')) return false;
         const token = authHeader.split(' ')[1];
         try {
-            const user = this.tokensService.verifyAccessToken(token);
+            const user = await this.tokensService.verifyAccessToken(token);
             request.user = user;
             return requiredRoles.includes(user.role);
         } catch (err) {
