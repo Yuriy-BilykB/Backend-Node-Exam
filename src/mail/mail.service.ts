@@ -1,8 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 import {ConfigService} from "@nestjs/config";
 @Injectable()
 export class MailService {
+    private readonly logger = new Logger(MailService.name);
+    
     constructor(private readonly configService: ConfigService) {}
     emailTransport(){
         const transporter = nodemailer.createTransport({
@@ -18,6 +20,10 @@ export class MailService {
     }
 
     async sendEmail(to: string, token: string) {
+        if (!to || !token) {
+            throw new InternalServerErrorException('Email and token are required');
+        }
+        
         const resetUrl = `http://localhost:3000/reset-password?token=${token}`;
         const transport = this.emailTransport();
         const mailOptions = {
@@ -32,9 +38,11 @@ export class MailService {
       `,
         };
         try {
-            await transport.sendMail(mailOptions)
-        }catch (error) {
-            console.log(`Error sending mail: `, error);
+            await transport.sendMail(mailOptions);
+            this.logger.log(`Password recovery email sent to ${to}`);
+        } catch (error) {
+            this.logger.error(`Failed to send email to ${to}:`, error);
+            throw new InternalServerErrorException('Failed to send email');
         }
     }
 }

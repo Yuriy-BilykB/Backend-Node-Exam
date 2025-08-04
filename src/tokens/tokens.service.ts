@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import {Injectable, UnauthorizedException, InternalServerErrorException} from '@nestjs/common';
 import {JwtService} from "@nestjs/jwt";
 import {TokensDto} from "./dto/TokensDto";
 import {ConfigService} from "@nestjs/config";
@@ -12,12 +12,14 @@ export class TokensService {
     ) {
     }
 
+    
     generateTokens(payloadDto: PayloadDto): TokensDto {
         const payload = {id: payloadDto.id, email: payloadDto.email, role: payloadDto.role};
         const accessToken = this.jwtService.sign(payload, {
             secret: this.configService.get<string>('ACCESS_TOKEN_SECRET'),
             expiresIn: this.configService.get<string>('EXPIRES_ACCESS_TOKEN'),
         });
+        console.log('access token secret',this.configService.get<string>('ACCESS_TOKEN_SECRET'));
 
         const refreshToken = this.jwtService.sign(payload, {
             secret: this.configService.get<string>('REFRESH_TOKEN_SECRET'),
@@ -28,15 +30,23 @@ export class TokensService {
     };
 
     verifyAccessToken(token: string) {
-        return this.jwtService.verify(token, {
-            secret: this.configService.get<string>('ACCESS_TOKEN_SECRET'),
-        });
+        try {
+            return this.jwtService.verify(token, {
+                secret: this.configService.get<string>('ACCESS_TOKEN_SECRET'),
+            });
+        } catch (error) {
+            throw new UnauthorizedException('Invalid access token');
+        }
     };
 
     verifyRefreshToken(token: string) {
-        return this.jwtService.verify(token, {
-            secret: this.configService.get<string>('REFRESH_TOKEN_SECRET'),
-        });
+        try {
+            return this.jwtService.verify(token, {
+                secret: this.configService.get<string>('REFRESH_TOKEN_SECRET'),
+            });
+        } catch (error) {
+            throw new UnauthorizedException('Invalid refresh token');
+        }
     };
 
     generateRecoveryToken(email: string) {
@@ -49,8 +59,12 @@ export class TokensService {
     };
 
     verifyRecoveryToken(token: string) {
-        return this.jwtService.verify(token, {
-            secret: this.configService.get<string>('RECOVERY_TOKEN_SECRET')
-        })
+        try {
+            return this.jwtService.verify(token, {
+                secret: this.configService.get<string>('RECOVERY_TOKEN_SECRET')
+            });
+        } catch (error) {
+            throw new UnauthorizedException('Invalid or expired recovery token');
+        }
     };
 }

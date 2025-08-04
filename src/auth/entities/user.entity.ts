@@ -30,6 +30,6 @@ export class User {
     }
 
     async validatePassword(password: string): Promise<boolean> {
-        return bcrypt.compare(password, this.password)
+        return await bcrypt.compare(password, this.password)
     }
 }

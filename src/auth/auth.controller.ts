@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Patch, Post, Req, Res, UnauthorizedException, UseGuards} from '@nestjs/common';
+import {BadRequestException, Body, Controller, Delete, Get, Patch, Post, Req, Res, UnauthorizedException, UseGuards} from '@nestjs/common';
 import {RegisterDto} from "./dto/RegisterDto";
 import {LoginDto} from "./dto/LoginDto";
 import {AuthService} from "./auth.service";
@@ -6,10 +6,11 @@ import {Request, Response} from "express";
 import {TokensService} from "../tokens/tokens.service";
 import {ResetPassDto} from "./dto/ResetPassDto";
 import {ForgotPasswordDto} from "./dto/ForgotPasswordDto";
-import {ApiBearerAuth, ApiOperation, ApiResponse} from "@nestjs/swagger";
+import {ApiBearerAuth, ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
 import {AuthResponseDto} from "./dto/AuthResponseDto";
 import {AuthGuard} from "../guards/auth.guard";
 
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
     constructor(
@@ -36,6 +37,7 @@ export class AuthController {
             accessToken: tokens.accessToken,
             user: user
         };
+     
     }
 
     @Post('login')
@@ -58,7 +60,7 @@ export class AuthController {
         };
     }
 
-    @Get('refresh')
+    @Post('refresh')
     @ApiOperation({summary: 'Refresh access token using refresh token cookie'})
     @ApiResponse({status: 200, description: 'New access token issued', type: AuthResponseDto})
     @ApiBearerAuth()
@@ -74,21 +76,21 @@ export class AuthController {
         if (!payload) {
             throw new UnauthorizedException('Refresh token not found');
         }
-        const user = this.tokenService.generateTokens(payload);
-        res.cookie('refresh_Token', user.refreshToken, {
+        const tokens = this.tokenService.generateTokens(payload);
+        res.cookie('refresh_Token', tokens.refreshToken, {
             httpOnly: true,
             secure: true,
             sameSite: 'lax',
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
         return {
-            accessToken: user.accessToken,
+            accessToken: tokens.accessToken,
             user: payload
         };
     }
 
     @UseGuards(AuthGuard)
-    @Get('logout')
+    @Delete('logout')
     @ApiOperation({ summary: 'Logout user' })
     @ApiResponse({ status: 200, description: 'User successfully logged out'})
     async logout(@Res({passthrough: true})res: Response) {

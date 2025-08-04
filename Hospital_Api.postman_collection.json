@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Andriy\",\r\n    \"email\": \"andriy@gmail.com\",\r\n    \"password\": \"123456789\",\r\n    \"role\": \"user\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Petro\",\r\n    \"email\": \"petro@gmail.com\",\r\n    \"password\": \"123456789\",\r\n    \"role\": \"user\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -75,11 +75,8 @@
 				},
 				{
 					"name": "refresh",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -156,6 +153,38 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMjcxNSwiZXhwIjoxNzU0MzIzNjE1fQ.vDTZ4SQhOBdNRb9SruBsiQvbQMzD9vLEKR2e40kw7jQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -170,7 +199,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyMzY5OCwiZXhwIjoxNzUyOTI0NTk4fQ.pjm1cjXE9u4ltXB9IE-CgLy2GvXdDgbxuiTZ2SsK4t0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMzAzMSwiZXhwIjoxNzU0MzIzOTMxfQ.Pk20GgIfT_C8SHghUwnuQf8iLPbfrBPbYUHI8OddzoE",
 									"type": "string"
 								}
 							]
@@ -179,7 +208,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Kyiv Dental Clinic\",\r\n    \"doctorIds\": [3, 4, 6, 10]\r\n}",
+							"raw": "{\r\n    \"name\": \"Kyiv New Clinic\",\r\n    \"doctorIds\": [8]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -187,12 +216,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic",
+							"raw": "{{baseURL}}/clinics",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic"
+								"clinics"
 							]
 						}
 					},
@@ -209,7 +238,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMzAzMSwiZXhwIjoxNzU0MzIzOTMxfQ.Pk20GgIfT_C8SHghUwnuQf8iLPbfrBPbYUHI8OddzoE",
 									"type": "string"
 								}
 							]
@@ -221,12 +250,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic",
+							"raw": "{{baseURL}}/clinics",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic"
+								"clinics"
 							]
 						}
 					},
@@ -240,7 +269,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTAyMSwiZXhwIjoxNzUyOTI1OTIxfQ.XxR4nGrNfFOzWqIwmcT8tw29QfOq345tAdbDn-xs-A4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMzAzMSwiZXhwIjoxNzU0MzIzOTMxfQ.Pk20GgIfT_C8SHghUwnuQf8iLPbfrBPbYUHI8OddzoE",
 									"type": "string"
 								}
 							]
@@ -248,12 +277,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/clinic?doctorName=John",
+							"raw": "{{baseURL}}/clinics?doctorName=John",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic"
+								"clinics"
 							],
 							"query": [
 								{
@@ -288,12 +317,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic?name=Kyiv",
+							"raw": "{{baseURL}}/clinics?name=Kyiv",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic"
+								"clinics"
 							],
 							"query": [
 								{
@@ -313,7 +342,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTAyMSwiZXhwIjoxNzUyOTI1OTIxfQ.XxR4nGrNfFOzWqIwmcT8tw29QfOq345tAdbDn-xs-A4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMzk2MiwiZXhwIjoxNzU0MzI0ODYyfQ.UGy2ZR_60SLlb81Vjy7BEkBtRz8LsAxoneXdc6MIkCU",
 									"type": "string"
 								}
 							]
@@ -321,12 +350,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/clinic?favorName=Blood Test",
+							"raw": "{{baseURL}}/clinics?favorName=Blood Test",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic"
+								"clinics"
 							],
 							"query": [
 								{
@@ -361,12 +390,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic?sort=desc",
+							"raw": "{{baseURL}}/clinics?sort=desc",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic"
+								"clinics"
 							],
 							"query": [
 								{
@@ -403,12 +432,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic/5",
+							"raw": "{{baseURL}}/clinics/5",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic",
+								"clinics",
 								"5"
 							]
 						}
@@ -423,7 +452,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMzk2MiwiZXhwIjoxNzU0MzI0ODYyfQ.UGy2ZR_60SLlb81Vjy7BEkBtRz8LsAxoneXdc6MIkCU",
 									"type": "string"
 								}
 							]
@@ -435,13 +464,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic/5",
+							"raw": "{{baseURL}}/clinics/15",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic",
-								"5"
+								"clinics",
+								"15"
 							]
 						}
 					},
@@ -458,7 +487,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMzAzMSwiZXhwIjoxNzU0MzIzOTMxfQ.Pk20GgIfT_C8SHghUwnuQf8iLPbfrBPbYUHI8OddzoE",
 									"type": "string"
 								}
 							]
@@ -473,16 +502,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"doctorIds\": [12]\r\n}"
+							"raw": "{\r\n  \"doctorIds\": [10]\r\n}"
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic/6/doctors",
+							"raw": "{{baseURL}}/clinics/8/doctors",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic",
-								"6",
+								"clinics",
+								"8",
 								"doctors"
 							]
 						}
@@ -497,7 +526,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkyNTk4NiwiZXhwIjoxNzUyOTI2ODg2fQ._3_X7zJppCm0FjCPHeT-1Mne1q4J6jIznOCEFnPyVLs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMxOTM5OCwiZXhwIjoxNzU0MzIwMjk4fQ.5-umewuSO-nqmTiqQNXZx4Fh_8IQ4UVjdKNXmqScOfM",
 									"type": "string"
 								}
 							]
@@ -509,15 +538,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic/6/doctors/11",
+							"raw": "{{baseURL}}/clinics/6/doctors/10",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic",
+								"clinics",
 								"6",
 								"doctors",
-								"11"
+								"10"
 							]
 						}
 					},
@@ -546,12 +575,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/clinic?doctorName=William&favorName=Physiotherapy",
+							"raw": "{{baseURL}}/clinics?doctorName=William&favorName=Physiotherapy",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"clinic"
+								"clinics"
 							],
 							"query": [
 								{
@@ -580,7 +609,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMzg5MSwiZXhwIjoxNzUyOTM0NzkxfQ.5sLBuK3e6_FZpfNYcP98uCdPjJTlPI9V8M1cWSeLhdA",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMzk2MiwiZXhwIjoxNzU0MzI0ODYyfQ.UGy2ZR_60SLlb81Vjy7BEkBtRz8LsAxoneXdc6MIkCU",
 									"type": "string"
 								}
 							]
@@ -597,12 +626,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/doctor",
+							"raw": "{{baseURL}}/doctors",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor"
+								"doctors"
 							]
 						}
 					},
@@ -631,12 +660,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/doctor",
+							"raw": "{{baseURL}}/doctors",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor"
+								"doctors"
 							]
 						}
 					},
@@ -665,12 +694,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/doctor?lastName=anderson&sortBy=lastName&sortOrder=desc",
+							"raw": "{{baseURL}}/doctors?lastName=anderson&sortBy=lastName&sortOrder=desc",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor"
+								"doctors"
 							],
 							"query": [
 								{
@@ -721,12 +750,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/doctor/1",
+							"raw": "{{baseURL}}/doctors/1",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor",
+								"doctors",
 								"1"
 							]
 						}
@@ -756,12 +785,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/doctor?lastName=anderson",
+							"raw": "{{baseURL}}/doctors?lastName=anderson",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor"
+								"doctors"
 							],
 							"query": [
 								{
@@ -789,12 +818,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/doctor?phoneNumber=380501234001",
+							"raw": "{{baseURL}}/doctors?phoneNumber=380501234001",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor"
+								"doctors"
 							],
 							"query": [
 								{
@@ -822,12 +851,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/doctor?email=john.anderson@",
+							"raw": "{{baseURL}}/doctors?email=john.anderson@",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor"
+								"doctors"
 							],
 							"query": [
 								{
@@ -847,7 +876,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMjA2NSwiZXhwIjoxNzUyOTMyOTY1fQ.1-fg2zweK-fEp5wNBHNRFdBSXg5HnCV56FC_b2Q2YwI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMDYwOSwiZXhwIjoxNzU0MzIxNTA5fQ.kZNqxIHXl4S7C8kYl1JQkTqzbQq1xr_1svZcXXMmZJA",
 									"type": "string"
 								}
 							]
@@ -855,13 +884,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/doctor/4",
+							"raw": "{{baseURL}}/doctors/1",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor",
-								"4"
+								"doctors",
+								"1"
 							]
 						}
 					},
@@ -892,12 +921,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/doctor/4/favors",
+							"raw": "{{baseURL}}/doctors/4/favors",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor",
+								"doctors",
 								"4",
 								"favors"
 							]
@@ -921,12 +950,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/doctor/4",
+							"raw": "{{baseURL}}/doctors/4",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor",
+								"doctors",
 								"4"
 							]
 						}
@@ -941,7 +970,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjkzMjQxNSwiZXhwIjoxNzUyOTMzMzE1fQ.6OXxYzXaTAXhWTWk8ZH1G0ZiVHRdxtVbP4PGxBxq1LI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1cmFiaWxpazc1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMyMDYwOSwiZXhwIjoxNzU0MzIxNTA5fQ.kZNqxIHXl4S7C8kYl1JQkTqzbQq1xr_1svZcXXMmZJA",
 									"type": "string"
 								}
 							]
@@ -949,15 +978,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/doctor/1/favors/4",
+							"raw": "{{baseURL}}/doctors/3/favors/3",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor",
-								"1",
+								"doctors",
+								"3",
 								"favors",
-								"4"
+								"3"
 							]
 						}
 					},
@@ -988,12 +1017,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/doctor/1/favors",
+							"raw": "{{baseURL}}/doctors/1/favors",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"doctor",
+								"doctors",
 								"1",
 								"favors"
 							]
@@ -1021,12 +1050,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/favor",
+							"raw": "{{baseURL}}/favors",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"favor"
+								"favors"
 							]
 						}
 					},
@@ -1045,12 +1074,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/favor",
+							"raw": "{{baseURL}}/favors",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"favor"
+								"favors"
 							]
 						}
 					},
@@ -1069,12 +1098,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/favor?name=vac&sort=desc",
+							"raw": "{{baseURL}}/favors?name=vac&sort=desc",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"favor"
+								"favors"
 							],
 							"query": [
 								{
@@ -1093,16 +1122,19 @@
 				{
 					"name": "deleteFavor",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/favor/1",
+							"raw": "{{baseURL}}/favors/3",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"favor",
-								"1"
+								"favors",
+								"3"
 							]
 						}
 					},
@@ -1139,12 +1171,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/favor/1",
+							"raw": "{{baseURL}}/favors/1",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"favor",
+								"favors",
 								"1"
 							]
 						}
